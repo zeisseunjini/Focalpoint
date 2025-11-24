@@ -1,0 +1,166 @@
+/* [styles.css] 파일 전체 내용 (태블릿 최적화 레이아웃) */
+
+/* ZEISS 컬러 팔레트 정의 */
+:root {
+    --zeiss-blue: #00227F; 
+    --zeiss-light-blue: #0055AA; 
+    --zeiss-background: #f7f9fa; 
+    --zeiss-border: #cccccc; 
+    --zeiss-text: #333333; 
+    --zeiss-canvas-bg: #e9eef3; 
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--zeiss-background);
+    color: var(--zeiss-text);
+    font-size: 14px; /* 글자 크기 약간 키움 */
+    min-height: 100vh; /* 전체 높이 최소화 */
+    overflow-y: auto; /* 필요시 세로 스크롤 허용 */
+}
+
+#simulator-container {
+    display: flex;
+    flex-direction: column; /* 세로로 쌓기 */
+    width: 100%;
+    margin: 0 auto;
+    border-top: 5px solid var(--zeiss-blue);
+}
+
+/* 1. 좌측 제어판은 숨기거나(구조 유지) 너비 0으로 만듭니다. */
+#control-sidebar {
+    display: none; /* 이전 좌측바 요소들은 HTML에서 제거되었으므로, CSS에서는 숨김 */
+}
+
+/* 2. 메인 디스플레이는 전체 너비를 사용 */
+#main-display {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    background-color: var(--zeiss-background); 
+}
+
+/* Top Message Bar */
+#message-bar {
+    background-color: #ffffff; 
+    color: var(--zeiss-blue); 
+    padding: 15px 20px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); 
+    border-bottom: 1px solid var(--zeiss-border);
+}
+
+/* 캔버스 컨테이너 (가로 배치) */
+#canvas-container {
+    display: flex;
+    justify-content: center; /* 가운데 정렬 */
+    align-items: flex-start; 
+    padding: 20px;
+    gap: 15px;
+    flex-wrap: wrap; /* 좁은 화면에서 자동으로 줄바꿈 */
+}
+
+.canvas-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px; /* 세로 여백 추가 */
+}
+
+.canvas-wrapper h2 {
+    font-size: 16px; 
+    color: var(--zeiss-blue);
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+canvas {
+    background: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    border: 1px solid var(--zeiss-border); 
+}
+
+#microscopeCanvas {
+    background: var(--zeiss-canvas-bg); 
+}
+
+
+/* 3. ★★★ 하단 제어판 스타일 (태블릿/모바일 최적화) ★★★ */
+#controls-bottom-panel {
+    width: 90%; /* 화면 너비에 맞게 넓게 사용 */
+    max-width: 1000px;
+    margin: 20px auto; /* 중앙 배치 */
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid var(--zeiss-border);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+#logo-section {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--zeiss-border);
+    text-align: center;
+}
+#logo-myscope {
+    font-weight: bold;
+    color: var(--zeiss-blue); 
+    font-size: 20px; /* 크게 */
+}
+#logo-sem {
+    font-size: 16px; 
+    color: #666666; 
+}
+
+.control-group {
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--zeiss-border); 
+    text-align: center; 
+
+}
+.control-label {
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: var(--zeiss-text); 
+}
+
+/* 버튼 스타일 (하단) */
+#image-controls-bottom {
+    margin-top: 20px;
+    width: 100%; 
+}
+#image-controls-bottom button {
+    background-color: var(--zeiss-blue); 
+    color: white;
+    border: none;
+    padding: 12px 15px; /* 패딩 증가 */
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+    border-radius: 4px; 
+}
+
+/* Focus 슬라이더 막대 길이 설정 */
+input[type="range"] {
+    width: 400px; /* 원하는 가로 길이로 설정 */
+    /* 기존 스타일이 덮어쓰여지지 않도록 주의 */
+}
+
+/* ★ 주의: 만약 다른 CSS 코드에 input[type="range"]가 이미 100%로 설정되어 있다면, 
+            이 부분이 덮어씌워지지 않을 수 있습니다. 
+            그럴 경우 아래와 같이 부모 컨테이너의 max-width를 사용해야 합니다.
+            
+            하지만 위 코드(width: 400px)를 사용하면 대부분의 경우 길이가 설정됩니다.
+*/
+/* 슬라이더 오버라이드 CSS (이전 코드 유지) */
+/* ... (슬라이더 오버라이드 코드는 styles.css 파일 맨 아래에 수동으로 추가해야 함) ... */
