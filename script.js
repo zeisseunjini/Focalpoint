@@ -65,9 +65,8 @@ function draw() {
             messageBar.textContent = "집속점이 시료 표면과 일치하지 않아 빔 크기가 커지고 이미지가 흐립니다.";
         }
 
-        mainCtx.filter = `blur(${blurValue}px)`;
+        mainCanvas.style.filter = `blur(${blurValue}px)`;
         mainCtx.drawImage(originalImage, 0, 0, mainCanvas.width, mainCanvas.height);
-        mainCtx.filter = 'none';
 
     } else {
         // 이미지가 로드되지 않았을 경우 캔버스에 안내
@@ -254,4 +253,5 @@ focusSlider.addEventListener('input', draw);
 document.addEventListener('DOMContentLoaded', () => {
     // 1. 기본 이미지 로드
     loadImage(defaultImageURL);
+
 });
